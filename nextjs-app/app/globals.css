@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Prose-like message formatting */
+.message-content p {
+  margin-bottom: 0.5rem;
+}
+.message-content ul,
+.message-content ol {
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.message-content li {
+  margin-bottom: 0.25rem;
+}
+.message-content strong {
+  font-weight: 600;
+}
+.message-content code {
+  background: rgba(0, 0, 0, 0.12);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+/* Typing cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor::after {
+  content: "▋";
+  animation: blink 0.7s steps(1) infinite;
+  margin-left: 1px;
+}
