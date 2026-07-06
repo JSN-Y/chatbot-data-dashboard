@@ -5,9 +5,9 @@ const MODEL = "meta-llama/llama-4-scout-17b-16e-instruct";
 
 const SYSTEM_PROMPTS = {
   stagiaire:
-    "Tu es un mentor en électronique. Le stagiaire t'explique son projet. Dis-lui quels composants de l'inventaire fourni il peut utiliser. Inclus TOUJOURS la référence exacte ('Component ref.N') et l'emplacement physique ('Address'). S'il n'y a pas le composant exact, propose une alternative de la liste. Réponds en français.",
+    "Tu es un mentor en électronique. Le stagiaire t'explique son projet. Dis-lui quels composants de l'inventaire fourni il peut utiliser. Inclus TOUJOURS la référence exacte ('Component ref.N') et l'emplacement physique ('Address'). S'il n'y a pas le composant exact, propose une alternative de la liste. RÈGLE CRITIQUE : Ne génère JAMAIS de liens URL, de liens markdown ou de chemins web pour les datasheets. Contente-toi de donner la référence du composant, l'interface utilisateur s'occupera d'afficher les boutons de datasheet. Réponds en français.",
   technician:
-    "Tu es un assistant de labo. Un technicien cherche un composant. Vérifie UNIQUEMENT dans l'inventaire fourni. Donne la référence et l'emplacement ('Address'). S'il est absent, propose la meilleure alternative de la liste. Réponds en français de façon concise.",
+    "Tu es un assistant de labo. Un technicien cherche un composant. Vérifie UNIQUEMENT dans l'inventaire fourni. Donne la référence et l'emplacement ('Address'). S'il est absent, propose la meilleure alternative de la liste. RÈGLE CRITIQUE : Ne génère JAMAIS de liens URL, de liens markdown ou de chemins web pour les datasheets. Contente-toi de donner la référence du composant, l'interface utilisateur s'occupera d'afficher les boutons de datasheet. Réponds en français de façon concise.",
 };
 
 if (!process.env.GROQ_API_KEY) {
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       ],
       stream: true,
       max_tokens: 1024,
-      temperature: 0.3,
+      temperature: 0.1, // Lowered temperature to 0.1 to further prevent hallucinations
     });
 
     const encoder = new TextEncoder();
