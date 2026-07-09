@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import Papa from "papaparse";
 
 const SHEET_ID = "1JTkLQm_TizEQxT5QVRCJWA3rHyjzkr8zF3I8d19ZCEo";
-const INVENTORY_TABS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const INVENTORY_TABS = ["MASTER_INVENTORY"];
 const TRACKER_TAB = "TrackerLogs";
 const MAX_RETRIES = 4;
 const RETRY_DELAY_MS = 600;
